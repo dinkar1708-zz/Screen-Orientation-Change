@@ -1,8 +1,8 @@
 package change.orientation.android;
 
+import android.app.Fragment;
 import android.content.res.Configuration;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -28,7 +28,9 @@ public class MainActivityFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         Log.i(TAG, "onCreate......main fragment");
+        // keep fragment live
         setRetainInstance(true);
+
         Log.i(TAG, "onCreate......main fragment starting asynch task");
 
         DownloadTask task = new DownloadTask(getActivity(), new DownloadTask.DownloadCompletable() {
@@ -44,7 +46,7 @@ public class MainActivityFragment extends Fragment {
 
             }
         });
-//        task.execute(new String[]{"URL"});
+        task.execute(new String[]{"URL"});
     }
 
     public void setData(MyDataObject data) {

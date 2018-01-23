@@ -1,5 +1,7 @@
 package change.orientation.android;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -18,6 +20,12 @@ public class MainActivity extends AppCompatActivity {
     private String holdingAsyncTaskData = "";
     private static final String DOWNLOAD_DATA_KEY_SAVE = "save_data_key";
     private DownloadTask downloadTask;
+
+    private static final String TAG_MAIN_FRAGMENT = "main_fragment";
+    private MainActivityFragment mainActivityFragment;
+
+    private static final String TAG_OTHER_FRAGMENT = "other_fragment";
+    private MainActivityOtherFragment mainActivityOtherFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +47,26 @@ public class MainActivity extends AppCompatActivity {
             btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    startActivity(new Intent(MainActivity.this, AsyncTaskExampleActivity.class));
+                    startActivity(new Intent(MainActivity.this, WithoutHandleAsyncTaskExampleActivity.class));
                 }
             });
+
+        getExistingFragment();
+    }
+
+    private void getExistingFragment() {
+
+        // find the retained fragment on activity restarts
+        FragmentManager fm = getFragmentManager();
+        MainActivityFragment mainActivityFragment = (MainActivityFragment) fm.findFragmentByTag(TAG_MAIN_FRAGMENT);
+        Log.i(TAG, "getExistingFragment fragment object - " + mainActivityFragment);
+
+        MainActivityOtherFragment mainActivityOtherFragment = (MainActivityOtherFragment) fm.findFragmentByTag(TAG_OTHER_FRAGMENT);
+        Log.i(TAG, "getExistingFragment other fragment object " + mainActivityOtherFragment);
+    }
+
+    private MyDataObject loadMyData() {
+        return new MyDataObject();
     }
 
 

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="change.orientation.android.AsyncTaskExampleActivity">
+    tools:context="change.orientation.android.WithoutHandleAsyncTaskExampleActivity">
 
     <TextView
         android:id="@+id/textView"

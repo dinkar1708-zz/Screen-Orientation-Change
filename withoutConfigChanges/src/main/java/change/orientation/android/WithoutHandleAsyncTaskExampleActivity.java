@@ -5,8 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
-public class AsyncTaskExampleActivity extends AppCompatActivity {
-    private static final String TAG = AsyncTaskExampleActivity.class.getSimpleName();
+public class WithoutHandleAsyncTaskExampleActivity extends AppCompatActivity {
+    private static final String TAG = WithoutHandleAsyncTaskExampleActivity.class.getSimpleName();
     private ProgressDialog progressDialog;
 
     @Override
